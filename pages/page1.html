@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A series og chinese food</title><!--设置标题-->
+    <link rel="icon" href="head.jpg" type="image/x-icon"> <!--在网页标题左侧显示图标-->
+    <link rel="stylesheet" href="../css/page1.css"><!--<link>定义文档与外部资源的关系;href是超链接-->
+</head>
+
+<body>
+    <header><!--header表示表头-->
+        <a href="#" class="brand">Home</a><!--<a>用于定义锚；href="#"是指链接到当前页面-->
+        <div class="menu_btn"></div>
+        <div class="navigation"><!--定义菜单栏导航-->
+            <div class="navigation-items">
+                <a href="#">Index</a>
+                <a href="#">About</a>
+                <a href="#">Explore</a>
+                <a href="#">Trive</a>
+                <a href="#">Connect</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="home">
+        <video class="video-slide active" src="../video/morden1.mp4" active autoplay muted
+            loop></video><!--主页播放的那几个视频；autoplay是自动播放；muted表示静音播放；loop是循环播放-->
+        <video class="video-slide" src="../video/morden1.mp4" autoplay muted loop></video>
+        <video class="video-slide" src="../video/morden1.mp4" autoplay muted loop></video>
+        <video class="video-slide" src="../video/morden1.mp4" autoplay muted loop></video>
+        <video class="video-slide" src="../video/morden1.mp4" autoplay muted loop></video>
+        <div class="content active">
+            <h1>吹一吹夏日浅滩的海风
+                <br><!-- br表示换行 -->
+            </h1>
+            <p>蔚蓝壮阔的大海,宛如一幕倒挂的蓝天，你的渴望将会化成一片片小小的洁白的云朵,托起你朝朝幕幕的恋海梦想。</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="content">
+            <h1>坐上火车来一场说走就走的旅行
+                <br><!-- br表示换行 -->
+            </h1>
+            <p>绿皮火车的旅行，一辆优质的列车之旅，包含了窗外的风景、车内的体验、所遇之人和所逢之事，都能让一场旅行变成一场怀旧之旅。</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="content">
+            <h1>脚踏云端，来一次接近天际的旅行
+                <br><!-- br表示换行 -->
+            </h1>
+            <p>平缓的速度，开阔的视野，随性的方向让你体会在天空中翱翔的自由感觉，它让你伸手就能摸到白云，让你与蓬勃日出一起升起，与绚丽落日一起降落，是时候来场慢旅行，去实现你的云中梦。</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="content">
+            <h1>带上家人和朋友去野餐
+                <br><!-- br表示换行 -->
+            </h1>
+            <p>春天里所有美好的相遇故事，都在门外发生，春日短暂，可爱的食物和风景都值得被记录，今天拥有四份快乐，：周末、可乐、野餐和你</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="content">
+            <h1>环海岛的骑行
+                <br><!-- br表示换行 -->
+            </h1>
+            <p>坐车太快，徒步太慢，只有骑车才不会错过美丽的风景，不妨来一场环海岛的骑行吧</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="media-icons">
+            <a href="#"><img class="telephone" src="google-plus.png"></a> <!--设置右侧那几个登录按钮的图标-->
+            <a href="#"><img class="wechat" src="wechat.png"></a>
+            <a href="#"><img class="qq" src="qq.png"></a>
+        </div>
+        <div class="slider-navigation"><!--设置底部中间部分的那几个小导航按钮-->
+            <div class="nav-btn active"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+        </div>
+    </section>
+
+    <script type="text/javascript">/* 告诉浏览器里面的文本是属于javascript脚本。 */
+        const menuBtn = document.querySelector(".menu_btn");/* document.querySelector是javascript中的选择器，在此行，通过传入元素的类名来获取元素，因为menu_btn是在上面代码中定义的一个类 */
+        const navigation = document.querySelector(".navigation");
+        menuBtn.addEventListener("click", () =>   /* addEventListener()方法，即为事件监听 ;第一个参数是事件的类型（如'click 或 'mousedown'）,第二个参数是事件触发后调用的函数。*/ {
+            menuBtn.classList.toggle("active"); /* classList.toggle( className )切换到该类 */
+            navigation.classList.toggle("active");
+        });
+
+        const btns = document.querySelectorAll(".nav-btn");/* 选取文档中所有的nav-btn元素，返回的结果是一个列表 */
+        const slides = document.querySelectorAll(".video-slide");
+        const contents = document.querySelectorAll(".content");
+        var sliderNav = function (manual)/* 定义一个函数 */ {
+            btns.forEach(
+                (btn) => /* lamada表达式 */ {
+                    btn.classList.remove("active")/* 移除已经存在的active类名; */
+                }
+            );
+
+            slides.forEach((slide) => {
+                slide.classList.remove("active")
+            });
+
+            contents.forEach((content) => {
+                content.classList.remove("active")
+            });
+
+            btns[manual].classList.add("active");/* classList.add方法用于添加新的类名，如已经存在，则取消添加 */
+            slides[manual].classList.add("active");
+            contents[manual].classList.add("active");
+        }
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                sliderNav(i);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
